@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/fiuskylab/go-mock-example/common"
+	"github.com/fiuskylab/go-mock-example/entity"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -38,5 +39,14 @@ func NewStorage(c *common.Common) (*Storage, error) {
 	}
 	s.PGSQL = db
 
+	s.migrate()
+
 	return &s, nil
+}
+
+func (s *Storage) migrate() {
+	if err := s.PGSQL.AutoMigrate(entity.User{}); err != nil {
+		s.Common.Log.Error(err.Error())
+		return
+	}
 }
