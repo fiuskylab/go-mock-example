@@ -3,6 +3,7 @@ module github.com/fiuskylab/go-mock-example
 go 1.17
 
 require (
+	github.com/google/uuid v1.3.0
 	github.com/joho/godotenv v1.4.0
 	go.uber.org/zap v1.19.1
 	gorm.io/driver/postgres v1.2.1
