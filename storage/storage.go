@@ -45,7 +45,7 @@ func NewStorage(c *common.Common) (*Storage, error) {
 }
 
 func (s *Storage) migrate() {
-	if err := s.PGSQL.AutoMigrate(entity.User{}); err != nil {
+	if err := s.PGSQL.AutoMigrate(entity.UserModel{}); err != nil {
 		s.Common.Log.Error(err.Error())
 		return
 	}
